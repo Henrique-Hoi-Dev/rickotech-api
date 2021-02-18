@@ -1,4 +1,7 @@
 import app from './app';
 
-app.listen(3333);
-console.log('Rodando na porta:3333');
+var port = process.env.PORT || 8080;
+
+app.listen(port, function () {
+  console.log('Server running at http://127.0.0.1:%s', port);
+});
