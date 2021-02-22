@@ -27,7 +27,11 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      tipo_parcelas: {
+      tipo_parcela: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      tipo_pagamento: {
         type: Sequelize.STRING,
         allowNull: false,
       },
