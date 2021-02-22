@@ -5,11 +5,12 @@ class Financeiro extends Model {
     super.init(
       {
         valor: Sequelize.STRING,
+        tipo_pagamento: Sequelize.STRING,
+        tipo_parcela: Sequelize.STRING,
         valor_desconto: Sequelize.STRING,
         valor_pendente: Sequelize.STRING,
         valor_parcela: Sequelize.STRING,
         parcelas: Sequelize.STRING,
-        tipo_parcelas: Sequelize.STRING,
         produto_id: Sequelize.INTEGER,
       },
       {

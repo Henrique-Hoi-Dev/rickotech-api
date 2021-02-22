@@ -16,6 +16,7 @@ class ProductController {
     const ProductExist = await Product.findOne({
       where: { name: req.body.values.name },
     });
+
     if (ProductExist) {
       return res.status(400).json({ error: 'Esse Produto já existe.' });
     }
