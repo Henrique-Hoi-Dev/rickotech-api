@@ -1,57 +1,37 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('products', {
+    return queryInterface.createTable('financeiros', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      name: {
+      valor: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      categoria: {
+      valor_pendente: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      altura: {
+      valor_desconto: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      dia_da_semana: {
+      valor_parcela: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      horario: {
+      parcelas: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      largura: {
+      tipo_parcelas: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      comprimento: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      codigo_de_barra: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      peso: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      preco: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      descricao: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      avatar_id: {
+      produto_id: {
         type: Sequelize.INTEGER,
       },
       created_at: {
@@ -66,6 +46,6 @@ module.exports = {
   },
 
   down: (queryInterface) => {
-    return queryInterface.dropTable('products');
+    return queryInterface.dropTable('financeiros');
   },
 };

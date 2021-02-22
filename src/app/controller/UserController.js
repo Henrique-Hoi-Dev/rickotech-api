@@ -84,6 +84,7 @@ class UserController {
     }
 
     await user.update(req.body);
+
     const {
       id,
       name,
