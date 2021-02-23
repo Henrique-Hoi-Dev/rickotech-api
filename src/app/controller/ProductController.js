@@ -10,7 +10,7 @@ class ProductController {
     });
 
     if (!(await schema.isValid(req.body.values))) {
-      return res.status(400).json({ error: 'Erro de codigo de barra' });
+      return res.status(400).json({ error: 'Falha na validação' });
     }
 
     const ProductExist = await Product.findOne({

@@ -17,19 +17,19 @@ module.exports = {
       },
       valor_desconto: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       valor_parcela: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       parcelas: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       tipo_parcela: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       tipo_pagamento: {
         type: Sequelize.STRING,
