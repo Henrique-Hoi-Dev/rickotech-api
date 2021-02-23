@@ -37,5 +37,8 @@ routes.delete('/products/:id', ProductController.deleteProduct);
 
 //vendas
 routes.post('/venda/nova', FinanceiroController.store);
+routes.get('/venda/:id', FinanceiroController.getById);
+routes.get('/vendas', FinanceiroController.getAll);
+routes.put('/venda/:id', FinanceiroController.update);
 
 export default routes;
