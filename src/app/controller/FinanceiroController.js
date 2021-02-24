@@ -53,7 +53,15 @@ class FinanceiroController {
   async update(req, res) {
     const { id } = req.params;
 
-    const venda = await Financeiro.findByPk(id);
+    const venda = await Financeiro.findByPk(id, {
+      include: [
+        {
+          model: Produto,
+          as: 'produto',
+          attributes: ['id', 'name', 'preco'],
+        },
+      ],
+    });
 
     let Updated = await venda.update(req.body);
 
