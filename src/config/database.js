@@ -3,7 +3,7 @@ module.exports = {
   host: 'localhost',
   username: 'postgres',
   password: 'postgres',
-  database: 'CONTROLE_FINANCEIRO',
+  database: 'RICKOTECH_API',
   define: {
     timestamps: true,
     underscored: true,
