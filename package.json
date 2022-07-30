@@ -15,7 +15,7 @@
   },
   "name": "back-end",
   "version": "1.0.0",
-  "main": "src/server.js",
+  "main": "app.js",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon -L src/server.js",
