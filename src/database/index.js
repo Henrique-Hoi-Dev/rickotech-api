@@ -7,7 +7,7 @@ import Order from '../app/models/Order';
 import FinancialBox from '../app/models/FinancialBox';
 import Service from '../app/models/Service';
 
-require('dotenv').config();
+import dataBaseConfig from '../config/database'
 
 const models = [ 
   User, 
@@ -25,22 +25,7 @@ class Database {
   }
 
   init() {
-    this.connetion = new Sequelize({
-      dialect: 'postgres',
-      // host: process.env.DB_HOST,
-      // username: process.env.DB_USER,
-      // password: process.env.DB_PASS,
-      // database: process.env.DB_NAME,  
-      host: process.env.POST_HOST,
-      username: process.env.POST_USER,
-      password: process.env.POST_PASS,
-      database: process.env.POST_NAME,  
-      define: {
-        timestamps: true,
-        underscored: true,
-        underscoredAll: true,
-      },
-    });
+    this.connetion = new Sequelize(dataBaseConfig);
 
     models
       .map((model) => model.init(this.connetion))
