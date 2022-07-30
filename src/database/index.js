@@ -7,7 +7,7 @@ import Order from '../app/models/Order';
 import FinancialBox from '../app/models/FinancialBox';
 import Service from '../app/models/Service';
 
-import databaseConfig from '../config/database';
+// import databaseConfig from '../config/database';
 
 const models = [ 
   User, 
