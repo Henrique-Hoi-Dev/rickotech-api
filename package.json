@@ -15,12 +15,12 @@
   },
   "name": "back-end",
   "version": "1.0.0",
-  "module": "commonjs",
-  "main": "src/index.js",
+  "type": "module",
+  "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon -L src/index.js",
-    "start": "node -r esm src/index.js"
+    "dev": "nodemon -L src/server.js",
+    "start": "node -r esm src/server.js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
