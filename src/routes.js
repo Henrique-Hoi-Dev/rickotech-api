@@ -24,7 +24,7 @@ routes.post('/users/authenticate', SessionController.storeSession);
 routes.get('/card', CardController.index)
 
 //autenticação
-routes.use(authMiddleware);
+// routes.use(authMiddleware);
 
 //users
 routes.put('/user/:id', UserController.update)
