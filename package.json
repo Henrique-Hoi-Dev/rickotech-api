@@ -20,7 +20,7 @@
   "type": "commonjs",
   "scripts": {
     "dev": "nodemon -L src/server.js",
-    "start": "sequelize db:migrate && node -r esm src/server.js"
+    "start": "node -r esm src/server.js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
