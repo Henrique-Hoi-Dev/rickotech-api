@@ -1,11 +1,12 @@
 require('dotenv/config');
 
 module.exports = {
-  dialect: 'postgresql-curved-62989',
-  host: process.env.DB_HOST,
-  username: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
+  dialect: 'postgres',
+  url: "postgres://uvsgatgknbjnsb:b53b1a6a840eea327cb8060a62f9dce12f46d7fa566a94ef1b42eb2495e14d46@ec2-52-204-157-26.compute-1.amazonaws.com:5432/daldkdnf8tud4d",
+  // host: "ec2-52-204-157-26.compute-1.amazonaws.com",
+  // username: "uvsgatgknbjnsb",
+  // password: "b53b1a6a840eea327cb8060a62f9dce12f46d7fa566a94ef1b42eb2495e14d46",
+  // database: "daldkdnf8tud4d",
   define: {
     timestamps: true,
     underscored: true,
