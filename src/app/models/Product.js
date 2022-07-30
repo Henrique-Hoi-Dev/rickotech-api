@@ -4,18 +4,12 @@ class Product extends Model {
   static init(sequelize) {
     super.init(
       {
-        name: Sequelize.STRING,
-        categoria: Sequelize.STRING,
-        altura: Sequelize.STRING,
-        largura: Sequelize.STRING,
-        comprimento: Sequelize.STRING,
-        codigo_de_barra: Sequelize.STRING,
-        peso: Sequelize.STRING,
-        preco: Sequelize.STRING,
-        descricao: Sequelize.STRING,
-        dia_da_semana: Sequelize.STRING,
-        horario: Sequelize.STRING,
         avatar_id: Sequelize.INTEGER,
+        name: Sequelize.STRING,
+        price: Sequelize.DOUBLE,
+        quantity: Sequelize.DOUBLE,
+        description: Sequelize.STRING,
+        category: Sequelize.STRING,
       },
       {
         sequelize,
@@ -26,6 +20,7 @@ class Product extends Model {
   }
   static associate(models) {
     this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'avatar' });
+    this.hasMany(models.Order, { foreignKey: 'product_id', as: 'order' });
   }
 }
 

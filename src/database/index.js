@@ -1,12 +1,23 @@
 import Sequelize from 'sequelize';
 import File from '../app/models/File';
 import Product from '../app/models/Product';
-import Financeiro from '../app/models/Financeiro';
 import User from '../app/models/User';
+import Adress from '../app/models/Adress';
+import Order from '../app/models/Order';
+import FinancialBox from '../app/models/FinancialBox';
+import Service from '../app/models/Service';
 
 import databaseConfig from '../config/database';
 
-const models = [User, File, Product, Financeiro];
+const models = [ 
+  User, 
+  Adress, 
+  Product, 
+  File, 
+  Order, 
+  FinancialBox, 
+  Service
+];
 
 class Database {
   constructor() {

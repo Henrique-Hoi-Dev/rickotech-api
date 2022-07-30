@@ -1,132 +1,50 @@
-import * as Yup from 'yup';
-import User from '../models/User';
-import File from '../models/File';
+import UserService from '../../service/UserService';
 
 class UserController {
   async store(req, res) {
-    const schema = Yup.object().shape({
-      name: Yup.string().required(),
-      email: Yup.string().email().required(),
-      password: Yup.string().required().min(6),
-      cpf: Yup.string(),
-      data_nacimento: Yup.string(),
-      cargo: Yup.string(),
-    });
-
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Falha na validação' });
+    try {
+      let response;     
+      response = await UserService.store(req.body);
+      return res.send(response);
+    } catch (error) {
+      return res.status(200).json(error)
     }
-    // fazendo verificação email
-    const userExist = await User.findOne({ where: { email: req.body.email } });
-
-    if (userExist) {
-      return res
-        .status(400)
-        .json({ error: 'Esse email de usuário já existe.' });
-    }
-
-    const {
-      id,
-      name,
-      email,
-      provider,
-      cpf,
-      cargo,
-      data_nacimento,
-    } = await User.create(req.body);
-
-    return res.json({
-      id,
-      name,
-      email,
-      provider,
-      cpf,
-      cargo,
-      data_nacimento,
-    });
   }
-
+  async index(req, res) {
+    try {
+      let response;      
+      response = await UserService.index();
+      return res.send(response);
+    } catch (error) {
+      return res.status(200).json(error)
+    }
+  }
+  async getId(req, res) { 
+    try {
+      let response;      
+      response = await UserService.getId(req.params);
+      return res.send(response);
+    } catch (error) {
+      return res.status(200).json(error)
+    }
+  }
   async update(req, res) {
-    const schema = Yup.object().shape({
-      name: Yup.string(),
-      email: Yup.string().email(),
-      oldPassword: Yup.string().min(6),
-      password: Yup.string()
-        .min(8)
-        .when('oldPassword', (oldPassword, field) =>
-          oldPassword ? field.required() : field
-        ),
-      confirmPassword: Yup.string().when('password', (password, field) =>
-        password ? field.required().oneOf([Yup.ref('password')]) : field
-      ),
-    });
-
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Falha na validação' });
+    try {
+      let response;
+      response = await UserService.update(req.body, req.params);
+      return res.send(response);
+    } catch (error) {
+      return res.status(200).json(error)
     }
-
-    const { email, oldPassword } = req.body;
-
-    const user = await User.findByPk(req.userId);
-
-    if (email !== user.email) {
-      const userExist = await User.findOne({ where: { email } });
-
-      if (userExist) {
-        return res
-          .status(400)
-          .json({ error: 'Esse email de usuário já existe.' });
-      }
+  }
+  async delete(req, res) {
+    try {
+      let response;     
+      response = await UserService.delete(req.params);
+      return res.send(response);
+    } catch (error) {
+      return res.status(200).json(error)
     }
-
-    if (oldPassword && !(await user.checkPassword(oldPassword))) {
-      return res.status(401).json({ error: 'Senha não corresponde' });
-    }
-
-    await user.update(req.body);
-
-    const {
-      id,
-      name,
-      avatar,
-      endereco,
-      cargo,
-      data_nacimento,
-      cpf,
-      cep,
-      logradouro,
-      complemento,
-      numero,
-      bairro,
-      cidade,
-      uf,
-    } = await User.findByPk(req.userId, {
-      include: [
-        {
-          model: File,
-          as: 'avatar',
-          attributes: ['id', 'path', 'url'],
-        },
-      ],
-    });
-
-    return res.json({
-      id,
-      name,
-      email,
-      avatar,
-      endereco,
-      cargo,
-      data_nacimento,
-      cpf,
-      cep,
-      logradouro,
-      complemento,
-      numero,
-      bairro,
-      cidade,
-      uf,
-    });
   }
 }
 export default new UserController();

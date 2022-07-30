@@ -9,18 +9,10 @@ class User extends Model {
         email: Sequelize.STRING,
         password: Sequelize.VIRTUAL,
         password_hash: Sequelize.STRING,
-        provider: Sequelize.BOOLEAN,
-        cargo: Sequelize.STRING,
+        company_position: Sequelize.ENUM('COLABORADOR', 'CEO', 'DIRETOR', 'GERENTE'),
         cpf: Sequelize.STRING,
-        data_nacimento: Sequelize.STRING,
+        date_birth : Sequelize.STRING,
         avatar_id: Sequelize.INTEGER,
-        cep: Sequelize.STRING,
-        logradouro: Sequelize.STRING,
-        complemento: Sequelize.STRING,
-        numero: Sequelize.STRING,
-        bairro: Sequelize.STRING,
-        cidade: Sequelize.STRING,
-        uf: Sequelize.STRING,
       },
       {
         sequelize,
@@ -39,6 +31,9 @@ class User extends Model {
 
   static associate(models) {
     this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'avatar' });
+    this.hasOne(models.Adress, { foreignKey: 'user_id', as: 'adress' });
+    this.hasMany(models.FinancialBox, { foreignKey: 'user_id', as: 'financialBox' });
+    this.hasMany(models.Order, { foreignKey: 'seller_id', as: 'order' });
   }
 
   checkPassword(password) {
