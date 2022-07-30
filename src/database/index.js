@@ -25,25 +25,16 @@ class Database {
   }
 
   init() {
-    this.connetion = new Sequelize(`${process.env.DATABASE_URL}?sslmode=require`,{
-      url: process.env.DATABASE_URL,
+    this.connetion = new Sequelize({
       dialect: 'postgres',
       // host: process.env.DB_HOST,
       // username: process.env.DB_USER,
       // password: process.env.DB_PASS,
       // database: process.env.DB_NAME,  
-      logging: false,
-      dialectOptions: {
-        ssl: {
-          require: true,
-          rejectUnauthorized: false, // very important
-        }
-      },
-      // pool: {
-      //     max: 5,
-      //     min: 0,
-      //     idle: 10000
-      // },
+      host: process.env.POST_HOST,
+      username: process.env.POST_USER,
+      password: process.env.POST_PASS,
+      database: process.env.POST_NAME,  
       define: {
         timestamps: true,
         underscored: true,
