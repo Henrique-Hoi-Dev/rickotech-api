@@ -3,7 +3,7 @@ import path from 'path';
 import routes from './routes';
 import cors from 'cors';
 
-import './database';
+// import './database';
 
 class App {
   constructor() {
@@ -12,7 +12,7 @@ class App {
     this.middlewares();
     this.routes();
   }
-  
+
   middlewares() {
     this.server.use(cors());
     this.server.use(express.json());
