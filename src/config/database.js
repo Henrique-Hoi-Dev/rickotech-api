@@ -1,7 +1,7 @@
 require('dotenv/config');
 
 module.exports = {
-  dialect: 'DATABASE_URL',
+  dialect: 'postgresql-curved-62989',
   host: process.env.DB_HOST,
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
