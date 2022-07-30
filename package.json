@@ -17,7 +17,6 @@
   "version": "1.0.0",
   "main": "src/server.js",
   "license": "MIT",
-  "type": "commonjs",
   "scripts": {
     "dev": "nodemon -L src/server.js",
     "start": "node -r esm src/server.js"
