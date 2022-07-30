@@ -1,7 +1,5 @@
 import app from './app';
 require = require("esm")(module);
 
-const port = process.env.PORT || 3333
-
-app.listen(port);
-console.log("server running", port)
+app.listen(process.env.PORT || 3333);
+console.log("server running", process.env.PORT || 3333)
