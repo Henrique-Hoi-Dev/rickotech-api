@@ -31,7 +31,7 @@ class App {
 
     this.middlewares();
     this.routes();
-    // this.init();
+    this.init();
   }
 
   middlewares() {
@@ -51,12 +51,12 @@ class App {
     this.sequelize = new Sequelize({
       dialect: 'postgres',
       url: process.env.DATABASE_URL,
-      dialectOptions: {
-        ssl: {
-          require: true,
-          rejectUnauthorized: false
-        }
-      }
+      // dialectOptions: {
+      //   ssl: {
+      //     require: true,
+      //     rejectUnauthorized: false
+      //   }
+      // }
     },
   );
 
