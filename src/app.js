@@ -3,13 +3,13 @@ import path from 'path';
 import routes from './routes';
 import cors from 'cors';
 import Sequelize from 'sequelize';
-import File from '../app/models/File';
-import Product from '../app/models/Product';
-import User from '../app/models/User';
-import Adress from '../app/models/Adress';
-import Order from '../app/models/Order';
-import FinancialBox from '../app/models/FinancialBox';
-import Service from '../app/models/Service';
+import File from './app/models/File';
+import Product from './app/models/Product';
+import User from './app/models/User';
+import Adress from './app/models/Adress';
+import Order from './app/models/Order';
+import FinancialBox from './app/models/FinancialBox';
+import Service from './app/models/Service';
 
 // import './database';
 
@@ -44,6 +44,7 @@ class App {
   routes() {
     this.server.use(routes);
   }
+
   init() {
     this.sequelize = new Sequelize(process.env.DATABASE_URL, {
         dialectOptions: {
