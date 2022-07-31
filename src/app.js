@@ -2,8 +2,9 @@ import express from 'express';
 import path from 'path';
 import routes from './routes';
 import cors from 'cors';
+import Sequelize from 'sequelize';
 
-import './database';
+// import './database';
 
 class App {
   constructor() {
@@ -11,6 +12,7 @@ class App {
 
     this.middlewares();
     this.routes();
+    this.init();
   }
 
   middlewares() {
@@ -24,6 +26,26 @@ class App {
 
   routes() {
     this.server.use(routes);
+  }
+  init() {
+    this.sequelize = new Sequelize(process.env.DATABASE_URL, {
+        dialectOptions: {
+          ssl: {
+            require: true,
+            rejectUnauthorized: false
+          }
+        }
+      }
+    );
+
+  this.sequelize
+    .authenticate()
+    .then(() => {
+      console.log('Connection has been established successfully.');
+    })
+    .catch(err => {
+      console.error('Unable to connect to the database:', err);
+    });   
   }
 }
 
