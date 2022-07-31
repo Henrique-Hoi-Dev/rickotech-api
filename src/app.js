@@ -33,7 +33,7 @@ class App {
 
     this.middlewares();
     this.routes();
-    // this.init();
+    this.init();
   }
 
   middlewares() {
@@ -50,7 +50,7 @@ class App {
   }
 
   init() {
-    this.sequelize = new Sequelize(process.env.DATABASE_URL, {
+    this.sequelize = new Sequelize(DATABASE_URL, {
       dialect: 'postgres',
       dialectOptions: {
         ssl: {
@@ -70,11 +70,11 @@ class App {
       console.error('Unable to connect to the database:', err);
     });
     
-    // models
-    // .map((model) => model.init(this.connetion))
-    // .map(
-    //   (model) => model.associate && model.associate(this.connetion.models)
-    // )
+    models
+    .map((model) => model.init(this.connetion))
+    .map(
+      (model) => model.associate && model.associate(this.connetion.models)
+    )
   }
 }
 
