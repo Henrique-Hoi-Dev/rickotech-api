@@ -33,7 +33,7 @@ class App {
 
     this.middlewares();
     this.routes();
-    this.init();
+    // this.init();
   }
 
   middlewares() {
