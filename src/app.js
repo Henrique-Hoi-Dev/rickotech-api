@@ -47,13 +47,8 @@ class App {
   }
 
   init() {
-    this.sequelize = new Sequelize({
+    this.sequelize = new Sequelize(process.env.DATABASE_URL, {
       dialect: 'postgres',
-      // url: process.env.DATABASE_URL,
-      host: "ec2-100-26-39-41.compute-1.amazonaws.com",
-      username: "osrdpskuytgofk",
-      password: "f020f68ea56a4d562292ba2061ad991e268c3f7167c9d99ffcbecbce96211377",
-      database: "d9rtqhip5f3dmt",
       dialectOptions: {
         ssl: {
           require: true,
@@ -72,11 +67,11 @@ class App {
       console.error('Unable to connect to the database:', err);
     });
     
-    models
-    .map((model) => model.init(this.connetion))
-    .map(
-      (model) => model.associate && model.associate(this.connetion.models)
-    )
+    // models
+    // .map((model) => model.init(this.connetion))
+    // .map(
+    //   (model) => model.associate && model.associate(this.connetion.models)
+    // )
   }
 }
 
