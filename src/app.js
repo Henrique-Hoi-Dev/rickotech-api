@@ -13,17 +13,16 @@ import FinancialBox from './app/models/FinancialBox';
 import Service from './app/models/Service';
 
 // import './database';
-console.log(process.env.DATABASE_URL)
 
-// const models = [ 
-//   User, 
-//   Adress, 
-//   Product, 
-//   File, 
-//   Order, 
-//   FinancialBox, 
-//   Service
-// ];
+const models = [ 
+  User, 
+  Adress, 
+  Product, 
+  File, 
+  Order, 
+  FinancialBox, 
+  Service
+];
 
 class App {
   constructor() {
@@ -48,19 +47,33 @@ class App {
   }
 
   init() {
-    this.sequelize = new Sequelize({
-      dialect: 'postgres',
-      url: process.env.DATABASE_URL,
-      // dialectOptions: {
-      //   ssl: {
-      //     require: true,
-      //     rejectUnauthorized: false
-      //   }
-      // }
-    },
-  );
+    const sequelize = new Sequelize({
+      database: "d9rtqhip5f3dmt",
+      username: "osrdpskuytgofk",
+      password: "f020f68ea56a4d562292ba2061ad991e268c3f7167c9d99ffcbecbce96211377",
+      host: "ec2-100-26-39-41.compute-1.amazonaws.com",
+      port: 5432,
+      dialect: "postgres",
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false // <<<<<<< YOU NEED THIS
+        }
+      },
+    });
+  //   this.sequelize = new Sequelize({
+  //     dialect: 'postgres',
+  //     url: process.env.DATABASE_URL,
+  //     // dialectOptions: {
+  //     //   ssl: {
+  //     //     require: true,
+  //     //     rejectUnauthorized: false
+  //     //   }
+  //     // }
+  //   },
+  // );
 
-  this.sequelize
+  sequelize
     .authenticate()
     .then(() => {
       console.log('Connection has been established successfully.');
