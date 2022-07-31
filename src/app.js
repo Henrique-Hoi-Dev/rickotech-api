@@ -15,15 +15,15 @@ import Service from './app/models/Service';
 // import './database';
 console.log(process.env.DATABASE_URL)
 
-const models = [ 
-  User, 
-  Adress, 
-  Product, 
-  File, 
-  Order, 
-  FinancialBox, 
-  Service
-];
+// const models = [ 
+//   User, 
+//   Adress, 
+//   Product, 
+//   File, 
+//   Order, 
+//   FinancialBox, 
+//   Service
+// ];
 
 class App {
   constructor() {
