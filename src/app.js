@@ -50,8 +50,9 @@ class App {
   }
 
   init() {
-    this.sequelize = new Sequelize(DATABASE_URL, {
+    this.sequelize = new Sequelize({
       dialect: 'postgres',
+      url: DATABASE_URL,
       dialectOptions: {
         ssl: {
           require: true,
