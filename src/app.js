@@ -14,6 +14,7 @@ import Service from './app/models/Service';
 
 // import './database';
 // console.log(process.env.DATABASE_URL)
+
 const models = [ 
   User, 
   Adress, 
@@ -23,6 +24,8 @@ const models = [
   FinancialBox, 
   Service
 ];
+
+const { DATABASE_URL } = process.env;
 
 class App {
   constructor() {
