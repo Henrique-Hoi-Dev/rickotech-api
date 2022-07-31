@@ -47,19 +47,14 @@ class App {
 
   init() {
     this.sequelize = new Sequelize(process.env.DATABASE_URL, {
-        dialectOptions: {
-          ssl: {
-            require: true,
-            rejectUnauthorized: false
-          }
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false
         }
-      },
-      models
-      .map((model) => model.init(this.connetion))
-      .map(
-        (model) => model.associate && model.associate(this.connetion.models)
-      )
-    );
+      }
+    },
+  );
 
   this.sequelize
     .authenticate()
@@ -68,7 +63,13 @@ class App {
     })
     .catch(err => {
       console.error('Unable to connect to the database:', err);
-    });   
+    });
+    
+    models
+    .map((model) => model.init(this.connetion))
+    .map(
+      (model) => model.associate && model.associate(this.connetion.models)
+    )
   }
 }
 
