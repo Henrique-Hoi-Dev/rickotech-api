@@ -18,7 +18,7 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon -L src/server.js",
+    "dev": "sequelize db:migrate && nodemon src/server.js",
     "start": "node -r esm src/server.js"
   },
   "devDependencies": {
