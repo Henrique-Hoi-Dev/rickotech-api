@@ -10,9 +10,10 @@ import Adress from './app/models/Adress';
 import Order from './app/models/Order';
 import FinancialBox from './app/models/FinancialBox';
 import Service from './app/models/Service';
+require('dotenv/config');
 
 // import './database';
-
+// console.log(process.env.DATABASE_URL)
 const models = [ 
   User, 
   Adress, 
