@@ -13,10 +13,10 @@ module.exports = {
   },
   development: {
     dialect: 'postgres',
-    host: process.env.POST_HOST,
-    username: process.env.POST_USER,
-    password: process.env.POST_PASS,
-    database: process.env.POST_NAME,
+    host: process.env.DB_HOST,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
 
     define: {
       timestamps: true,
