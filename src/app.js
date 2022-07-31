@@ -13,7 +13,7 @@ import FinancialBox from './app/models/FinancialBox';
 import Service from './app/models/Service';
 
 // import './database';
-// console.log(process.env.DATABASE_URL)
+console.log(process.env.DATABASE_URL)
 
 const models = [ 
   User, 
@@ -24,8 +24,6 @@ const models = [
   FinancialBox, 
   Service
 ];
-
-const { DATABASE_URL } = process.env;
 
 class App {
   constructor() {
@@ -52,7 +50,7 @@ class App {
   init() {
     this.sequelize = new Sequelize({
       dialect: 'postgres',
-      url: DATABASE_URL,
+      url: process.env.DATABASE_URL,
       dialectOptions: {
         ssl: {
           require: true,
@@ -71,11 +69,11 @@ class App {
       console.error('Unable to connect to the database:', err);
     });
     
-    models
-    .map((model) => model.init(this.connetion))
-    .map(
-      (model) => model.associate && model.associate(this.connetion.models)
-    )
+    // models
+    // .map((model) => model.init(this.connetion))
+    // .map(
+    //   (model) => model.associate && model.associate(this.connetion.models)
+    // )
   }
 }
 
