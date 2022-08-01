@@ -1,7 +1,6 @@
-require("dotenv/config")
-
-module.exports = {
-  production: {
+import "dotenv/config"
+ 
+ export const production = {
     url: process.env.DATABASE_URL,
     dialect: 'postgres',
     dialectOptions: {
@@ -15,8 +14,9 @@ module.exports = {
       underscored: true,
       underscoredAll: true,
     },
-  },
-  development: {
+  }
+
+  export const development = {
     dialect: 'postgres',
     url: process.env.DATABASE_LOCAL_URL,
     define: {
@@ -24,5 +24,5 @@ module.exports = {
       underscored: true,
       underscoredAll: true,
     },
-  },
-};
+  }
+

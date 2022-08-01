@@ -1,10 +1,9 @@
-require("dotenv/config")
-
 import express from 'express';
 import path from 'path';
 import routes from './routes';
 import cors from 'cors';
 import sequelize from './database/sequelize';
+import "dotenv/config"
 
 class App {
   constructor() {

@@ -1,6 +1,4 @@
-const { Sequelize } = require("sequelize");
-require("dotenv/config")
-
+import Sequelize from 'sequelize';
 import File from '../app/models/File';
 import Product from '../app/models/Product';
 import User from '../app/models/User';
@@ -8,6 +6,7 @@ import Adress from '../app/models/Adress';
 import Order from '../app/models/Order';
 import FinancialBox from '../app/models/FinancialBox';
 import Service from '../app/models/Service';
+import "dotenv/config"
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: 'postgres',
@@ -43,7 +42,7 @@ models
 
 sequelize
   .authenticate()
-  .then(() => console.log("Connection has been established successfully.", process.env.DATABASE_URL))
+  .then(() => console.log("Connection has been established successfully."))
   .catch((err) => console.error("Unable to connect to the database:", err));
 
 export default sequelize;
