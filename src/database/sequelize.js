@@ -1,4 +1,5 @@
 const { Sequelize } = require("sequelize");
+require("dotenv").config()
 
 import File from '../app/models/File';
 import Product from '../app/models/Product';
@@ -7,9 +8,16 @@ import Adress from '../app/models/Adress';
 import Order from '../app/models/Order';
 import FinancialBox from '../app/models/FinancialBox';
 import Service from '../app/models/Service';
-import dataBaseConfig from '../config/database'
+// import dataBaseConfig from '../config/database'
 
-const sequelize = new Sequelize(dataBaseConfig.production);
+const sequelize = new Sequelize(process.env.DATABASE_URL,{
+  dialectOptions: {
+    ssl: {
+      // require: true,
+      rejectUnauthorized: false
+    }
+  },
+});
 
 //check connection (optional)
 const models = [ 
