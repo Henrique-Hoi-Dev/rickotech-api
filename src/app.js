@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import routes from './routes';
 import cors from 'cors';
-import sequelize from './database';
+// import sequelize from './database';
 
 class App {
   constructor() {
@@ -26,9 +26,9 @@ class App {
     this.server.use(routes);
   }
 
-  sequelize() {
-    sequelize
-  }
+  // sequelize() {
+  //   sequelize
+  // }
 }
 
 export default new App().server;
