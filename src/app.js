@@ -10,7 +10,7 @@ class App {
 
     this.middlewares();
     this.routes();
-    this.sequelize();
+    // this.sequelize();
   }
 
   middlewares() {
