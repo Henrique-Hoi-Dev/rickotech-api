@@ -25,7 +25,7 @@ class Database {
   }
 
   init() {
-    this.connetion = new Sequelize(dataBaseConfig.production);
+    this.connetion = new Sequelize(dataBaseConfig.development);
 
     models
       .map((model) => model.init(this.connetion))
