@@ -1,28 +1,8 @@
 import express from 'express';
-import 'dotenv/config'
 import path from 'path';
 import routes from './routes';
 import cors from 'cors';
-import Sequelize from 'sequelize';
-import File from './app/models/File';
-import Product from './app/models/Product';
-import User from './app/models/User';
-import Adress from './app/models/Adress';
-import Order from './app/models/Order';
-import FinancialBox from './app/models/FinancialBox';
-import Service from './app/models/Service';
-
-// import './database';
-
-const models = [ 
-  User, 
-  Adress, 
-  Product, 
-  File, 
-  Order, 
-  FinancialBox, 
-  Service
-];
+import sequelize from './database';
 
 class App {
   constructor() {
@@ -30,7 +10,7 @@ class App {
 
     this.middlewares();
     this.routes();
-    this.init();
+    this.sequelize();
   }
 
   middlewares() {
@@ -46,47 +26,8 @@ class App {
     this.server.use(routes);
   }
 
-  init() {
-    const sequelize = new Sequelize({
-      database: "d9rtqhip5f3dmt",
-      username: "osrdpskuytgofk",
-      password: "f020f68ea56a4d562292ba2061ad991e268c3f7167c9d99ffcbecbce96211377",
-      host: "ec2-100-26-39-41.compute-1.amazonaws.com",
-      port: 5432,
-      dialect: "postgres",
-      dialectOptions: {
-        ssl: {
-          require: true,
-          rejectUnauthorized: false // <<<<<<< YOU NEED THIS
-        }
-      },
-    });
-  //   this.sequelize = new Sequelize({
-  //     dialect: 'postgres',
-  //     url: process.env.DATABASE_URL,
-  //     // dialectOptions: {
-  //     //   ssl: {
-  //     //     require: true,
-  //     //     rejectUnauthorized: false
-  //     //   }
-  //     // }
-  //   },
-  // );
-
-  sequelize
-    .authenticate()
-    .then(() => {
-      console.log('Connection has been established successfully.');
-    })
-    .catch(err => {
-      console.error('Unable to connect to the database:', err);
-    });
-    
-    // models
-    // .map((model) => model.init(this.connetion))
-    // .map(
-    //   (model) => model.associate && model.associate(this.connetion.models)
-    // )
+  sequelize() {
+    sequelize
   }
 }
 
