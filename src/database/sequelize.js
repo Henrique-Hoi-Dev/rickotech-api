@@ -9,14 +9,14 @@ import Order from '../app/models/Order';
 import FinancialBox from '../app/models/FinancialBox';
 import Service from '../app/models/Service';
 
-const sequelize = new Sequelize(process.env.DATABASE_URI, {
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: 'postgres',
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false
-    },
-  },
+  // dialectOptions: { 
+  //   ssl: {
+  //     require: true,
+  //     rejectUnauthorized: false
+  //   },
+  // },
   define: {
     timestamps: true,
     underscored: true,
@@ -43,7 +43,7 @@ models
 
 sequelize
   .authenticate()
-  .then(() => console.log("Connection has been established successfully."))
+  .then(() => console.log("Connection has been established successfully.", process.env.DATABASE_URL))
   .catch((err) => console.error("Unable to connect to the database:", err));
 
 export default sequelize;
