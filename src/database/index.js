@@ -7,8 +7,6 @@ import Order from '../app/models/Order';
 import FinancialBox from '../app/models/FinancialBox';
 import Service from '../app/models/Service';
 
-import dataBaseConfig from '../config/database'
-
 const models = [ 
   User, 
   Adress, 
@@ -25,7 +23,13 @@ class Database {
   }
 
   init() {
-    this.connetion = new Sequelize(dataBaseConfig.development);
+    this.connetion = new Sequelize(process.env.DATABASE_URL, {
+      define: {
+        timestamps: true,
+        underscored: true,
+        underscoredAll: true,
+      },
+    });
 
     models
       .map((model) => model.init(this.connetion))

@@ -1,5 +1,5 @@
 const { Sequelize } = require("sequelize");
-require("dotenv").config()
+require("dotenv/config")
 
 import File from '../app/models/File';
 import Product from '../app/models/Product';
@@ -8,9 +8,8 @@ import Adress from '../app/models/Adress';
 import Order from '../app/models/Order';
 import FinancialBox from '../app/models/FinancialBox';
 import Service from '../app/models/Service';
-// import dataBaseConfig from '../config/database'
 
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
+const sequelize = new Sequelize(process.env.DATABASE_URI, {
   dialect: 'postgres',
   dialectOptions: {
     ssl: {

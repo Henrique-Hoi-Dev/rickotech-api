@@ -1,5 +1,6 @@
 import app from './app';
-require("dotenv").config()
+require("dotenv/config")
 
-app.listen(process.env.PORT || 3333);
-console.log("server running!!!")
+const PORT = process.env.PORT || 3333
+app.listen(PORT);
+console.log("server running!!!", PORT)
