@@ -11,6 +11,7 @@ class FileController {
     });
     return res.json(file);
   }
+  
   async getId(req, res) {
     try {
       let response;      
@@ -20,6 +21,7 @@ class FileController {
       return res.status(400).json(error)
     } 
   }
+  
   async delete(req, res) {
     try {
       let response;     
@@ -30,4 +32,5 @@ class FileController {
     }
   }
 }
+
 export default new FileController();
