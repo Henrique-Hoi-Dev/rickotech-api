@@ -8,9 +8,9 @@ export default {
   async store(req, res) {
     let result = {}
 
-    const { name, price, category, quantity, description } = req
+    const { name, price, category, quantity, description, images } = req
 
-    const product_images = req?.product_images?.map((res) => ({ id: v4(), img: res }))
+    const product_images = images.map((res) => ({ id: v4(), img: res }))
 
     const body = { name, price, category, quantity, description, product_images }
 
@@ -66,7 +66,7 @@ export default {
 
     const product = await Product.findByPk(req.id);
 
-    const product_images = res?.product_images?.map((res) => ({ id: v4(), img: res }))
+    const product_images = res.images.map((res) => ({ id: v4(), img: res }))
 
     const body = { product_images }
 
