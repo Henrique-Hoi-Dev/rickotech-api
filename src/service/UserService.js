@@ -27,6 +27,7 @@ export default {
 
     return users;
   },
+
   async index(req, res) {
     const users = await User.findAll({
       attributes: [ 
@@ -37,13 +38,13 @@ export default {
         'cpf', 
         'date_birth', 
         'cpf', 
-        'avatar'
+        'product_images'
       ],
       include: [
       {
         model: Adress,
         as: 'adress',
-        attributes:  [ 
+        attributes: [ 
             'id', 
             'cep', 
             'logradouro', 
@@ -58,6 +59,7 @@ export default {
     });
     return users;
   },
+
   async getId(req, res) {
     let user = await User.findByPk(req.id, {
       attributes: [ 
@@ -66,7 +68,7 @@ export default {
         'email', 
         'company_position', 
         'cpf', 
-        'avatar', 
+        'product_images', 
         'date_birth' 
       ],
       include: [
@@ -88,6 +90,7 @@ export default {
     });
     return user;
   },
+  
   async update(req, res) {   
     let users = req
     let userId = res.id
@@ -134,7 +137,7 @@ export default {
         'company_position', 
         'date_birth', 
         'cpf', 
-        'avatar', 
+        'product_images', 
       ],
       include: [
         {
@@ -156,6 +159,7 @@ export default {
 
     return result
   },
+  
   async delete(req, res) {
     let result = {}
     

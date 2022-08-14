@@ -20,6 +20,7 @@ export default {
 
     return services
   },
+
   async index(req, res) {
     const services = await Service.findAll({
       where: { employee_id: req.id },
@@ -40,6 +41,7 @@ export default {
 
     return services
   },
+
   async getId(req, res) {
     let result = {}
     let serviceId = req.id 
@@ -55,6 +57,7 @@ export default {
     result = {httpStatus: httpStatus.OK, status: "Success", responseData: services}    
     return result
   },
+  
   async delete(req, res) {
     let result = {}
     const id  = req.id;

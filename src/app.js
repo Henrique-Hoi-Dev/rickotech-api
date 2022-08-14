@@ -6,7 +6,7 @@ import sequelize from './database/sequelize';
 import "dotenv/config"
 
 // só para rodar migration na Produção ou confinguração local
-// import './database.js';
+import './database.js';
 
 class App {
   constructor() {
@@ -14,7 +14,7 @@ class App {
 
     this.middlewares();
     this.routes();
-    this.sequelize();
+    // this.sequelize();
   }
 
   middlewares() {

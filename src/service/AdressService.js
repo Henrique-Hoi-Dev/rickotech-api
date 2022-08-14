@@ -27,6 +27,7 @@ export default {
 
     return adress
   },
+
   async getId(req, res) {
     let adressId = await Adress.findOne({ where: { user_id: req.id },
       attributes: [
@@ -42,6 +43,7 @@ export default {
     });
     return adressId
   },
+  
   async update(req, res) {
     let result = {}
 
