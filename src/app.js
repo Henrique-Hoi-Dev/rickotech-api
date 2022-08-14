@@ -5,6 +5,9 @@ import cors from 'cors';
 import sequelize from './database/sequelize';
 import "dotenv/config"
 
+// só para rodar migration na Produção ou confinguração local
+// import './database.js';
+
 class App {
   constructor() {
     this.server = express();
@@ -17,10 +20,6 @@ class App {
   middlewares() {
     this.server.use(cors());
     this.server.use(express.json());
-    this.server.use(
-      '/files',
-      express.static(path.resolve(__dirname, '..', 'tmp', 'uploads'))
-    );
   }
 
   routes() {

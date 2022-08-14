@@ -7,7 +7,7 @@ import Order from '../app/models/Order';
 import FinancialBox from '../app/models/FinancialBox';
 import Service from '../app/models/Service';
 
-import { production, development } from "../config/database"
+import databaseConfig from '../config/database.js';
 
 const models = [ 
   User, 
@@ -25,7 +25,7 @@ class Database {
   }
 
   init() {
-    this.connetion = new Sequelize(production);
+    this.connetion = new Sequelize(databaseConfig);
 
     models
       .map((model) => model.init(this.connetion))

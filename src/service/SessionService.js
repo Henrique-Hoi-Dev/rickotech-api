@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken';
 import * as Yup from 'yup';
 
 import User from '../app/models/User';
-import File from '../app/models/File';
 import authConfig from '../config/auth';
 import Adress from '../app/models/Adress';
 
@@ -24,11 +23,6 @@ export default {
       const user = await User.findOne({
         where: { email },
         include: [
-          {
-            model: File,
-            as: 'avatar',
-            attributes: ['id', 'path', 'url']
-          },
           {
             model: Adress,
             as: 'adress',
