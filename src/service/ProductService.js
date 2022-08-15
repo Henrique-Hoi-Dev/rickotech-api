@@ -66,9 +66,11 @@ export default {
 
     const product = await Product.findByPk(req.id);
 
-    const product_images = res.images.map((res) => ({ id: v4(), img: res }))
+    const { name, price, category, quantity, description, images } = res
 
-    const body = { product_images }
+    const product_images = images.map((res) => ({ id: v4(), img: res }))
+
+    const body = { name, price, category, quantity, description, product_images }
 
     const productUpdated = await product.update(body);
 
