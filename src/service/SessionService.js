@@ -48,8 +48,8 @@ export default {
       return res.status(401).json({ error: 'Senha está incorreta' });
     }
 
-    const { id, name, avatar, company_position, adress, provider, cpf, date_birth } = user;
-    const users = { id, name, email, avatar, company_position, provider, cpf, date_birth, adress },
+    const { id, name, avatar, company_position, adress, cpf, date_birth } = user;
+    const users = { id, name, email, avatar, company_position, cpf, date_birth, adress },
       token = jwt.sign({ id }, authConfig.secret, {
       expiresIn: authConfig.expiresIn,
     });

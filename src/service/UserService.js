@@ -37,8 +37,7 @@ export default {
         'company_position', 
         'cpf', 
         'date_birth', 
-        'cpf', 
-        'product_images'
+        'avatar'
       ],
       include: [
       {
@@ -68,7 +67,7 @@ export default {
         'email', 
         'company_position', 
         'cpf', 
-        'product_images', 
+        'avatar', 
         'date_birth' 
       ],
       include: [
@@ -137,7 +136,7 @@ export default {
         'company_position', 
         'date_birth', 
         'cpf', 
-        'product_images', 
+        'avatar', 
       ],
       include: [
         {
