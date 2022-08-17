@@ -39,7 +39,7 @@ routes.post('/adress/:user_id', AdressController.store)
       .delete('/adress/:id', AdressController.delete);
 
 //avatar
-routes.post('/files', upload.single('file'), FileController.store);
+// routes.post('/files', upload.single('file'), FileController.store);
 routes.get('/avatar', FileController.getId);
 routes.delete('/avatar/:id', FileController.delete);
 
