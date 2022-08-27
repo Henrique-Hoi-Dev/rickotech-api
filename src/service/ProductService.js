@@ -30,7 +30,17 @@ export default {
   },
 
   async index(req, res) {
+    let result = {}
+    
+    const { page = 1, limit = 100, sort_order = 'ASC', sort_field = 'name' } = req.query;
+    const total = (await Product.findAll()).length;
+
+    const totalPages = Math.ceil(total / limit);
+
     const products = await Product.findAll({
+      order: [[ sort_field, sort_order ]],
+      limit: limit,
+      offset: (page - 1) ? (page - 1) * limit : 0,
       attributes: [ 
         'id', 
         'name',
@@ -42,7 +52,10 @@ export default {
       ],
     });
 
-    return products
+    const currentPage = Number(page)
+
+    result = {total, totalPages, currentPage, products}
+    return result
   },
 
   async getId(req, res) {

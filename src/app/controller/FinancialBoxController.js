@@ -7,7 +7,7 @@ class FinancialBoxController {
       response = await FinancialBoxService.store(req.body, req.params);
       return res.status(200).send(response);
     } catch (error) {
-      return res.status(400).json(error)
+      return res.status(400).json({ mgs: error.message})
     }
   }
   async index(req, res) {
@@ -16,7 +16,7 @@ class FinancialBoxController {
       response = await FinancialBoxService.index(req.params);
       return res.status(200).send(response);
     } catch (error) {
-      return res.status(400).json(error)
+      return res.status(400).json({ mgs: error.message})
     }
     
   }
@@ -26,7 +26,7 @@ class FinancialBoxController {
       response = await FinancialBoxService.open(req.params);
       return res.status(200).send(response);
     } catch (error) {
-      return res.status(400).json(error)
+      return res.status(400).json({ mgs: error.message})
     }
   }
   async getId(req, res) {
@@ -35,7 +35,7 @@ class FinancialBoxController {
       response = await FinancialBoxService.getId(req.params);
       return res.status(200).send(response);
     } catch (error) {
-      return res.status(400).json(error)
+      return res.status(400).json({ mgs: error.message})
     }
   }
   async update(req, res) {
@@ -44,7 +44,7 @@ class FinancialBoxController {
       response = await FinancialBoxService.update(req.body, req.params);
       return res.status(200).send(response);
     } catch (error) {
-      return res.status(400).json(error)
+      return res.status(400).json({ mgs: error.message})
     }
   }
 }

@@ -89,7 +89,6 @@ export default {
     });
     return user;
   },
-  
   async update(req, res) {   
     let users = req
     let userId = res.id

@@ -7,7 +7,7 @@ class OrderController {
       response = await OrderService.store(req.body, req.params);
       return res.status(200).send(response);
     } catch (error) {
-      return res.status(400).json(error);
+      return res.status(400).json({ mgs: error.message});
     }
   }
   async index(req, res) {
@@ -16,7 +16,7 @@ class OrderController {
       response = await OrderService.index(req.params);
       return res.status(200).send(response);
     } catch (error) {
-      return res.status(400).json(error);
+      return res.status(400).json({ mgs: error.message});
     }
   }
   async getId(req, res) {
@@ -25,7 +25,7 @@ class OrderController {
       response = await OrderService.getId(req.params);
       return res.status(200).send(response);
     } catch (error) {
-      return res.status(400).json(error);
+      return res.status(400).json({ mgs: error.message});
     }
   }
   async delete(req, res) {
